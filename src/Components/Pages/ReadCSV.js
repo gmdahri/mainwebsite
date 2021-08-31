@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CSVReader from 'react-csv-reader';
 import DrawRectangle from './DrawRectangle';
 import {
@@ -9,18 +9,21 @@ import {
     Rectangle
 } from 'draw-shape-reactjs';
 export default function ReadCSV() {
-    const [state, setstate] = useState({});
-  
+    const [state, setstate] = useState([]);
+    useEffect(() => {
+        console.log(state);
+    }, [state])
+      
     const itterateData = (data) => {
         for (let i = 0; i < data.length; i++)
             for (let j = 0; j < data[i].length; j++) {
                 if (data[i][1] == '218') {
                    
-                  setstate({...state, 
+                  setstate([...state,{ 
                   x: Number(data[i][2]), 
                   y: Number(data[i][3]),
                   w: Number(data[i][4]), 
-                  h: Number(data[i][5]) });
+                  h: Number(data[i][5])}]);
 
 
                   
@@ -30,7 +33,6 @@ export default function ReadCSV() {
                     console.log('no')
                 }
           }
-
 
           console.log(state)
     //    console.log(state,'in function')
@@ -43,7 +45,8 @@ export default function ReadCSV() {
              
             //   console.log(state ," state")
            }
-             {state && (<DrawRectangle  state={state}/>)} 
+
+             {state && state.map((e)=>(<DrawRectangle  state={e}/>))} 
              
 
            
