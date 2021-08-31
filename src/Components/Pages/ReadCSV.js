@@ -16,11 +16,11 @@ export default function ReadCSV() {
             for (let j = 0; j < data[i].length; j++) {
                 if (data[i][1] == '218') {
                    
-                  setstate([...state, {
+                  setstate({...state, 
                   x: Number(data[i][2]), 
                   y: Number(data[i][3]),
                   w: Number(data[i][4]), 
-                  h: Number(data[i][5]) }]);
+                  h: Number(data[i][5]) });
 
 
                   
