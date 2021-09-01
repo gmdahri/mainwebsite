@@ -10,7 +10,8 @@ import {
 } from 'draw-shape-reactjs';
 export default function ReadCSV() {
     const [state, setstate] = useState({});
-  
+    var [counter,setCounter]=useState(0);
+    var c=0;
     const itterateData = (data) => {
         for (let i = 0; i < data.length; i++)
             for (let j = 0; j < data[i].length; j++) {
@@ -20,7 +21,9 @@ export default function ReadCSV() {
                   x: Number(data[i][2]), 
                   y: Number(data[i][3]),
                   w: Number(data[i][4]), 
-                  h: Number(data[i][5]) });
+                  h: Number(data[i][5]), });
+                  
+                  setCounter(counter+1);
 
 
                   
@@ -32,7 +35,7 @@ export default function ReadCSV() {
           }
 
 
-          console.log(state)
+          console.log(counter)
     //    console.log(state,'in function')
     }
     return (
@@ -43,7 +46,7 @@ export default function ReadCSV() {
              
             //   console.log(state ," state")
            }
-             {state && (<DrawRectangle  state={state}/>)} 
+             {state && (<DrawRectangle  state={state} counter={counter}/>)} 
              
 
            

@@ -8,7 +8,7 @@ import {
 } from 'draw-shape-reactjs';
 import img from '../assets/frame218.jpg';
 
-export default function DrawRectangle(state) {
+export default function DrawRectangle(state,counter) {
     // console.log(state.state , 'in rectangle ')
     var x=[1];
     return (
@@ -22,12 +22,7 @@ export default function DrawRectangle(state) {
                     color='#1DBFE7'
                 /> */}
                 {state && state.state && console.log(state.state)}
-        {  state && <Rectangle
-                corner={[state.state.x, state.state.y]}
-                width={state.state.w - state.state.x}
-                height={state.state.h - state.state.y}
-                color='#FF0266'
-            />}
+        {  state ? for(let i=0;i<counter;i++){}:null}
         </div>
     )
 }
