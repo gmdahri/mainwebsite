@@ -6,14 +6,15 @@ import {
     Circle,
     Rectangle
 } from 'draw-shape-reactjs';
-import img from '../assets/frame218.jpg';
 
 export default function DrawRectangle(state,counter) {
     // console.log(state.state , 'in rectangle ')
+    console.log(state.state,'pxa');
     var x=[1];
     return (
         <div>
 
+<<<<<<< HEAD
 <img src={img} /> 
              {/* <Line
                     position='fixed'
@@ -23,6 +24,23 @@ export default function DrawRectangle(state,counter) {
                 /> */}
                 {state && state.state && console.log(state.state)}
         {  state ? for(let i=0;i<counter;i++){}:null}
+=======
+        {/* {pxa && pxb &&    <Line
+                position='fixed'
+                from={[pxa, pya]}
+                to={[pxb , pyb ]}
+                color='#1DBFE7'
+            />} */}
+
+{/* {state && state.state && console.log(state.state[0].x)} */}
+
+        {  state && <Rectangle
+                corner={[state.state.x, state.state.y]}
+                width={state.state.w - state.state.x}
+                height={state.state.h - state.state.y}
+                color='#FF0266'
+            />} 
+>>>>>>> c3574a1f427b79f5c2c2a7c45c410ef6610ab988
         </div>
     )
 }
