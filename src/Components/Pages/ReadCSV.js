@@ -9,10 +9,11 @@ import {
     Rectangle
 } from 'draw-shape-reactjs';
 import img from '../assets/frame218.jpg';
+import MyChart from './MyChart';
 
 export default function ReadCSV() {
     const [state, setstate] = useState([]);
-    const [flag,setFlag]=useState(false);
+    const [flag, setFlag] = useState(false);
     useEffect(() => {
         // console.log(state, 'in useEffect');
     }, [state]);
@@ -27,16 +28,16 @@ export default function ReadCSV() {
         //              break;
         //         }
         //   }
-      
-        for(var i=0;i<data.length;i++){
-            
-                if(data[i][6]!='xmid')
-                setstate((pre)=>[...pre,
+
+        for (var i = 0; i < data.length; i++) {
+
+            if (data[i][6] != 'xmid')
+                setstate((pre) => [...pre,
                 {
-                    x:data[i][6],
-                    y:data[i][7]
+                    x: Number(data[i][6]),
+                    y: Number(data[i][7])
                 }]);
-            
+
         }
         setFlag(true);
 
@@ -45,18 +46,30 @@ export default function ReadCSV() {
         <div>
 
             <CSVReader onFileLoaded={(data, fileInfo) => itterateData(data)} />
-           
-           {
-             
-            //   console.log(state ," state")  
-           }
+            <MyChart state={state}/>
+            {
 
-             {/* {state && state.map((e)=>(<DrawRectangle  state={e}/>))}  */}
-             {/* {value && value.map((e,i)=>(<DrawRectangle pOne={e[i]} pTwo={e[i+1]} />))} */}
-         {flag && <DrawRectangle state={state} /> }
-             {/* <img src={img} />  */}
-                
-           
+                //   console.log(state ," state")  
+            }
+
+            {/* {state && state.map((e)=>(<DrawRectangle  state={e}/>))}  */}
+            {/* {flag && (<DrawRectangle  state={state}  />)}  */}
+
+            {/* {flag && state.map((element, index) => {
+                if (index<state.length-2) {
+                //     <Line
+                //     position="fixed"
+                //     from={[element.x, element.y]}
+                //     to={[state[index+1], state[index+1].y]}
+                //     color="#FFFF00"
+                //   />
+                    <DrawRectangle px={element.x} py={element.y} pxa={state[index + 1].x} pya={state[index + 1].y} h={flag}/>
+                    console.log(element.x,element.y,state[index+1].x,state[index+1].y);
+                } */}
+            {/* })} */}
+            {/* <img src={img} />  */}
+
+
         </div>
     )
 }
